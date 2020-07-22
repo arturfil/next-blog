@@ -1,3 +1,12 @@
+@import './shared/fonts';
+@import './index';
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Montserrat', 'Helvetica' !important;
+}
+
 .customClassFromFile {
   color: purple;
 }

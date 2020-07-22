@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link'
+import { Link } from '../routes';
 import axios from 'axios';
 import BaseLayout from '../components/layouts/BaseLayout';
 
@@ -18,7 +18,7 @@ class Projects extends React.Component {
   renderPosts(posts) {
     return posts.map(post => (
         <li key={post.id} style={{fontSize: '20px'}}>
-          <Link as={`/projects/${post.id}`} href={`/projects/[id]`}>
+          <Link route={`/projects/${post.id}`}>
             <a>{post.title}</a>
           </Link>
         </li>
