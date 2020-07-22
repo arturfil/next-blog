@@ -1,17 +1,19 @@
 import React from 'react';
 import BaseLayout from '../components/layouts/BaseLayout';
 
-class Index extends React.Component {
+class Project extends React.Component {
+
   render() {
+    const {project} = this.props;
     return (
       <>
         <BaseLayout>
-          <h1>Index Page</h1>
+          <h1>Single Portfolio</h1>
         </BaseLayout>
       </>
     )
-  
   }
+
 }
 
-export default Index;
+export default Project; 
