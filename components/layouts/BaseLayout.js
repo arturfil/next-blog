@@ -4,15 +4,14 @@ const BaseLayout = (props) => {
 
   const {className, children} = props;
   return (
-    <>
+    <div className="">
       <Header/>
       <main className={`cover ${className}`}>
         <div className="wrapper">
           {children}
         </div>
       </main>
-      {props.children}
-    </>  
+    </div>  
   )
 }
 

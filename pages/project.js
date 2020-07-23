@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import BaseLayout from '../components/layouts/BaseLayout';
+import BasePage from '../components/BasePage';
 
 class Project extends React.Component {
 
@@ -20,9 +21,10 @@ class Project extends React.Component {
     return (
       <>
         <BaseLayout>
-          <h4 style={{fontSize: '40px'}}>{project.title}</h4>
-          <p style={{fontSize: '25px'}}>{project.body}</p>
-          
+          <BasePage>
+            <h4 style={{fontSize: '40px'}}>{project.title}</h4>
+            <p style={{fontSize: '25px'}}>{project.body}</p>
+          </BasePage>
         </BaseLayout>
       </>
     )

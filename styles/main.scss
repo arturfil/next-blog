@@ -1,5 +1,6 @@
 @import './shared/fonts';
 @import './index';
+@import './components/header';
 
 html, body {
   height: 100%;
@@ -7,6 +8,18 @@ html, body {
   font-family: 'Montserrat', 'Helvetica' !important;
 }
 
-.customClassFromFile {
-  color: purple;
+.base-page {
+  padding-top: 150px;
+  color: white;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.self-typed {
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 2px;
 }

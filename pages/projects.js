@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from '../routes';
 import axios from 'axios';
 import BaseLayout from '../components/layouts/BaseLayout';
+import BasePage from '../components/BasePage';
 
 class Projects extends React.Component {
   static async getInitialProps() {
@@ -32,10 +33,12 @@ class Projects extends React.Component {
     return (
       <>
         <BaseLayout>
-          <h1 className="customClassFromFile">Projects Page</h1>
-          <ul>
-            {this.renderPosts(posts)}
-          </ul>
+          <BasePage>
+            <h1 className="customClassFromFile">Projects Page</h1>
+            <ul>
+              {this.renderPosts(posts)}
+            </ul>
+          </BasePage>
         </BaseLayout>
       </>
     )
