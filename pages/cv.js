@@ -7,7 +7,7 @@ const CV = () => {
     <>
       <BaseLayout>
         <BasePage>
-          <h1>CV Page</h1>
+          <h1>Here is my CV!</h1>
         </BasePage>
       </BaseLayout>
     </>

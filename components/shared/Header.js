@@ -14,7 +14,7 @@ const BsNavLink = (props) => {
   const {title, href} = props;
   return (
     <Link href={href}>
-      <a className="nav-link">
+      <a className="nav-link port-navbar-link">
         {title}
       </a>
     </Link>
@@ -28,6 +28,10 @@ const BsNavBrand = () => {
     </Link>
   )
 }
+
+const LoginLink = () => <span className="nav-link port-navbar-link">Login</span>;
+
+ const LogoutLink = () => <span className="nav-link port-navbar-link">Logout</span>;
 
 const Header = () =>  {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,6 +61,14 @@ const Header = () =>  {
             </NavItem>
             <NavItem className="port-navbar-item">
               <BsNavLink href="/cv" title="CV"/>
+            </NavItem>
+          </Nav>
+          <Nav className="navbar">
+            <NavItem className="port-navbar-item clickable">
+              <LoginLink/>
+            </NavItem>
+            <NavItem className="port-navbar-item clickable">
+              <LogoutLink/>
             </NavItem>
           </Nav>
         </Collapse>
