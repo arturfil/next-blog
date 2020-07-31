@@ -3,10 +3,10 @@ import Link  from 'next/link';
 import BaseLayout from '../../components/layouts/BaseLayout';
 import BasePage from '../../components/BasePage';
 import { useGetPosts } from '../../actions/index';
-
+import { useGetUser } from '../../actions/user';
 
 const Projects = () => {
-  
+  const {data: userData, loading: userLoading} = useGetUser();
   const {data, error, loading} = useGetPosts();
   const renderPosts = (posts) => {
     return posts.map(post => (
@@ -21,7 +21,7 @@ const Projects = () => {
 
     return (
       <>
-        <BaseLayout>
+        <BaseLayout user={userData} loading={userLoading}>
           <BasePage>
             { !loading &&
               <h1 className="customClassFromFile">Projects Page</h1>

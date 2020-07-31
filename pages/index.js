@@ -2,12 +2,16 @@ import React from 'react';
 import BaseLayout from '../components/layouts/BaseLayout';
 import { Container, Row, Col } from 'reactstrap';
 import Typed from 'react-typed';
+import {useGetUser} from '../actions/user';
 
 const ROLES = ['Computer Scientist', 'Finance & Economics Major', 'Perpetual Learner']
 
 const  Index = () => {
+
+  const {data, loading} = useGetUser();
+
   return (
-      <BaseLayout className="cover">
+      <BaseLayout user={data} loading={loading} className="cover">
         <div className="main-section">
           <div className="background-image">
             <img src="/images/background-index.png" />
@@ -24,7 +28,7 @@ const  Index = () => {
                           Have a look at my portfolio and job history.
                         </div>
                       </div>
-                      <img className="image" src="/images/section-1.png"/>
+                      <img className="image" src="/images/section-1.png"/> 
                       <div className="shadow-custom">
                         <div className="shadow-inner"> </div>
                       </div>

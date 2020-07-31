@@ -29,11 +29,11 @@ const BsNavBrand = () => {
   )
 }
 
-const LoginLink = () => <BsNavLink href="/api/v1/login" title="Login"/>
+const LoginLink = () => <a href="/api/v1/login" className="nav-link port-navbar-link">Login</a>
 
- const LogoutLink = () => <span className="nav-link port-navbar-link">Logout</span>;
+ const LogoutLink = () => <a href="/api/v1/logout" className="nav-link port-navbar-link">Logout</a>
 
-const Header = () =>  {
+const Header = ({user, loading}) =>  {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen)
    
@@ -64,12 +64,20 @@ const Header = () =>  {
             </NavItem>
           </Nav>
           <Nav className="navbar">
-            <NavItem className="port-navbar-item clickable">
-              <LoginLink/>
-            </NavItem>
-            <NavItem className="port-navbar-item clickable">
-              <LogoutLink/>
-            </NavItem>
+            { !loading && 
+              <>
+                { user &&
+                  <NavItem className="port-navbar-item clickable">
+                    <LogoutLink/>
+                  </NavItem>
+                }
+                { !user &&
+                  <NavItem className="port-navbar-item clickable">
+                    <LoginLink/>
+                  </NavItem>
+                }
+              </>
+            }
           </Nav>
         </Collapse>
       </Navbar>
@@ -77,4 +85,4 @@ const Header = () =>  {
   )
 }
 
-export default Header;
+export default Header;  
