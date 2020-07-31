@@ -29,14 +29,14 @@ const BsNavBrand = () => {
   )
 }
 
-const LoginLink = () => <span className="nav-link port-navbar-link">Login</span>;
+const LoginLink = () => <BsNavLink href="/api/v1/login" title="Login"/>
 
  const LogoutLink = () => <span className="nav-link port-navbar-link">Logout</span>;
 
 const Header = () =>  {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen)
-  
+   
   return (  
     <div>
       <Navbar className="port-navbar port-default absolute" 
@@ -47,7 +47,7 @@ const Header = () =>  {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            <NavItem className="port-navbar-item">
+            <NavItem className="port-navbar-item"> 
               <BsNavLink href="/" title="Home"/>
             </NavItem>
             <NavItem className="port-navbar-item">

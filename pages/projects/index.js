@@ -2,12 +2,12 @@ import React, {useEffect, useState} from 'react';
 import Link  from 'next/link';
 import BaseLayout from '../../components/layouts/BaseLayout';
 import BasePage from '../../components/BasePage';
-import { useGetData } from '../../actions';
+import { useGetPosts } from '../../actions/index';
 
 
 const Projects = () => {
-
-  const {data, error, loading} = useGetData('/api/v1/posts');
+  
+  const {data, error, loading} = useGetPosts();
   const renderPosts = (posts) => {
     return posts.map(post => (
         <li key={post.id} style={{fontSize: '20px'}}>

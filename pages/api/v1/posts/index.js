@@ -7,6 +7,6 @@ export default async (req, res) => {
     res.status(200).json(posts.slice(0, 10));
   } catch (e) {
     console.error(e);
-    res.status(e.status || 400).json({message: 'Error 505: Error is down'});
+    res.status(e.status || 400).json({message: 'Error 505: Server is down'});
   }
 }

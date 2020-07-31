@@ -1,12 +1,12 @@
 import React from 'react';
 import BaseLayout from '../../components/layouts/BaseLayout';
 import BasePage from '../../components/BasePage';
-import { useGetData } from '../../actions';
 import { useRouter } from 'next/router';
+import { useGetPostById } from '../../actions';
 
 const Project = () => {
   const router = useRouter();
-  const {data: project, error, loading} = useGetData(router.query.id ? `/api/v1/posts/${router.query.id}` : null);
+  const {data: project, error, loading} = useGetPostById(router.query.id)
 
   return (
     <>
