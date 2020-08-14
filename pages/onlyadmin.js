@@ -12,4 +12,4 @@
    )
  }
 
- export default withAuth(OnlyAdmin)('Admin');
+ export default withAuth(OnlyAdmin)('admin');

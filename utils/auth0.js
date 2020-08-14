@@ -38,8 +38,8 @@ const auth0 = initAuth0({
   }
 });
 
-export const isAuthorized = () => {
-  return (user && !user[process.env.AUTH0_NAMESPACE + '/roles'].includes(role));
+export const isAuthorized = (user, role) => {
+  return (user && user['https://portfolio-arturo.com' + '/roles'].includes(role));
     
 }
 
