@@ -62,18 +62,6 @@ const Header = ({user, loading}) =>  {
             <NavItem className="port-navbar-item">
               <BsNavLink href="/cv" title="CV"/>
             </NavItem>
-            <NavItem className="port-navbar-item">
-              <BsNavLink href="/secret" title="Secret"/>
-            </NavItem>
-            <NavItem className="port-navbar-item">
-              <BsNavLink href="/secretssr" title="SecretSSR"/>
-            </NavItem>
-            <NavItem className="port-navbar-item">
-              <BsNavLink href="/onlyadmin" title="Admin"/>
-            </NavItem>
-            <NavItem className="port-navbar-item">
-              <BsNavLink href="/onlyadminssr" title="AdminSSR"/>
-            </NavItem>
           </Nav>
           <Nav className="navbar">
             { !loading && 
