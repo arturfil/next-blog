@@ -2,11 +2,11 @@ import BaseLayout from '../components/layouts/BaseLayout';
 import BasePage from '../components/BasePage';
 import {authorizeUser, withAuth} from '../utils/auth0';
 
-const SecretSSR = ({user, title}) => {
+const OnlyAdminSSR = ({user, title}) => {
   return (
     <BaseLayout user={user} loading={false}>
       <BasePage>
-        <h1>I am secret page with SSR (Server Side Rendering)</h1>
+        <h1>I am Only Admin SSR (Server Side Rendering)</h1>
         <h2>Welcome {user && user.name}</h2>
         <h2>{title}</h2>
       </BasePage>
@@ -25,6 +25,6 @@ const getTitle = () => {
 export const getServerSideProps = withAuth(async () => {
   const title = await getTitle();
   return title;
-})();
+})('admin');
 
-export default SecretSSR;
+export default OnlyAdminSSR;
