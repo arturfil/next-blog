@@ -38,4 +38,9 @@ const auth0 = initAuth0({
   }
 });
 
+export const isAuthorized = () => {
+  return (user && !user[process.env.AUTH0_NAMESPACE + '/roles'].includes(role));
+    
+}
+
 export default auth0;
