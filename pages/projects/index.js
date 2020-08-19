@@ -2,47 +2,40 @@ import React, {useEffect, useState} from 'react';
 import Link  from 'next/link';
 import BaseLayout from '../../components/layouts/BaseLayout';
 import BasePage from '../../components/BasePage';
-import { useGetPosts } from '../../actions/index';
+import ProjectApi from '../../lib/api/projects';
 import { useGetUser } from '../../actions/user';
+import { Row, Col} from 'reactstrap';
+import ProjectCard from '../../components/ProjectCard';
 
-const Projects = () => {
+const Projects = ({projects}) => {
   const {data: userData, loading: userLoading} = useGetUser();
-  const {data, error, loading} = useGetPosts();
-  const renderPosts = (posts) => {
-    return posts.map(post => (
-        <li key={post.id} style={{fontSize: '20px'}}>
-          <Link as={`/projects/${post.id}`} href="/projects/[id]">
-            <a>{post.title}</a>
-          </Link>
-        </li>
-      )
-    ) 
-  }
 
     return (
       <>
         <BaseLayout user={userData} loading={userLoading}>
-          <BasePage>
-            { !loading &&
-              <h1 className="customClassFromFile">Projects Page</h1>
-            }
-            { loading &&
-              <h1 className="">Loading ...</h1>
-            }
-            { data &&
-              <ul>
-                {renderPosts(data)}
-              </ul>
-            }
-            { error &&
-              <div className="alert alert-danger">
-                {error.message}
-              </div>
-            }
+          <BasePage className="portfolio-page" header="Projects">
+            <Row>
+              { projects.map(project => 
+                  <Col md="4" key={project._id}>
+                    <ProjectCard project={project}/>
+                  </Col>
+                )
+              }
+            </Row>
           </BasePage>
         </BaseLayout>
       </>
     )
+}
+
+// Improved performance of page
+// it will create static page with dynamic data
+export const getStaticProps = async () => {
+  const json = await new ProjectApi().getAll();
+  const projects = json.data
+  return {
+    props: { projects }
+  }
 }
 
 export default Projects;
