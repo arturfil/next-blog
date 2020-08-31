@@ -75,6 +75,7 @@ const ProjectForm = ({onSubmitData}) => {
       <div className="form-group">
         <label htmlFor="description">Description</label>
         <textarea
+          ref={register}
           type="text"
           name="description"
           className="form-control"
