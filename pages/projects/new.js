@@ -5,12 +5,13 @@ import BaseLayout from '../../components/layouts/BaseLayout';
 import { Row, Col } from 'reactstrap';
 import ProjectForm from '../../components/ProjectForm';
 import { useCreateProject } from '../../actions/projects';
+import Redirect from '../../components/shared/Redirect';
 
 const ProjectNew = ({user, loading: userLoading}) => {
   const [createProject, {data, loading, error}] = useCreateProject();
 
-  const _createProject = (data) => {
-    createProject(data);
+  if (data) {
+    return <Redirect to="/projects"/>
   }
 
   return (
@@ -19,7 +20,7 @@ const ProjectNew = ({user, loading: userLoading}) => {
         <BasePage header="Create New Project">
           <Row>
             <Col md="8">
-              <ProjectForm onSubmitData={_createProject}/>
+              <ProjectForm onSubmitData={createProject}/>
             </Col>
           </Row>
         </BasePage>
