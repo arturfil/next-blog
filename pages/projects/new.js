@@ -4,9 +4,10 @@ import withAuth from '../../hoc/withAuth';
 import BaseLayout from '../../components/layouts/BaseLayout';
 import { Row, Col } from 'reactstrap';
 import ProjectForm from '../../components/ProjectForm';
-import { createProject } from '../../actions/projects';
+import { useCreateProject } from '../../actions/projects';
 
-const ProjectNew = ({data, loading: userLoading}) => {
+const ProjectNew = ({user, loading: userLoading}) => {
+  const [createProject, {data, loading, error}] = useCreateProject();
 
   const _createProject = (data) => {
     createProject(data);
@@ -14,7 +15,7 @@ const ProjectNew = ({data, loading: userLoading}) => {
 
   return (
     <>
-      <BaseLayout user={data} loading={userLoading}>
+      <BaseLayout user={user} loading={userLoading}>
         <BasePage header="Create New Project">
           <Row>
             <Col md="8">
