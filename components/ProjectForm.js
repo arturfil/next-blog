@@ -10,7 +10,13 @@ const ProjectForm = ({onSubmitData, initialData = {}}) => {
   useEffect(() => {
     register({name: 'startDate'})
     register({name: 'endDate'})
-  }, [register])
+  }, [register]);
+
+  useEffect(() => {
+    const { startDate, endDate } = initialData;
+    if (startDate) {setStartDate(new Date(startDate))}
+    if (endDate) { setEndDate(new Date(endDate))}
+  }, [initialData])
 
   const handleStartDate = (date) => {
     setStartDate(date);

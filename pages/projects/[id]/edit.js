@@ -18,7 +18,9 @@ const ProjectEdit = ({user}) => {
           <Row>
             <Col md="8 ">
               { data && 
-                <ProjectForm initialData={data}/>
+                <ProjectForm 
+                  onSubmitData={(data => alert(JSON.stringify(data)))} 
+                  initialData={data}/>
               }
             </Col>
           </Row>
