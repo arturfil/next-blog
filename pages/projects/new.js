@@ -21,6 +21,7 @@ const ProjectNew = ({user, loading: userLoading}) => {
           <Row>
             <Col md="8">
               <ProjectForm onSubmitData={createProject}/>
+              { error && <div className="alert alert-danger mt-3"> {error}</div>}
             </Col>
           </Row>
         </BasePage>

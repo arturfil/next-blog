@@ -2,10 +2,10 @@ import React, {useState, useEffect} from "react";
 import { useForm } from 'react-hook-form';
 import DatePicker from 'react-datepicker';
 
-const ProjectForm = ({onSubmitData}) => {
+const ProjectForm = ({onSubmitData, initialData = {}}) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
-  const { register, handleSubmit, setValue } = useForm();
+  const { register, handleSubmit, setValue } = useForm({defaultValues: initialData});
 
   useEffect(() => {
     register({name: 'startDate'})

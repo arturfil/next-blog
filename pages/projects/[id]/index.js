@@ -1,8 +1,8 @@
 import React from 'react';
-import BaseLayout from '../../components/layouts/BaseLayout';
-import BasePage from '../../components/BasePage';
-import ProjectApi from '../../lib/api/projects';
-import {useGetUser} from '../../actions/user';
+import BaseLayout from '../../../components/layouts/BaseLayout';
+import BasePage from '../../../components/BasePage';
+import ProjectApi from '../../../lib/api/projects';
+import {useGetUser} from '../../../actions/user';
 
 const Project = ({project}) => {
   const {data: userData, loading: userLoading} = useGetUser();

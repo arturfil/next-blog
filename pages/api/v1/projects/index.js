@@ -7,7 +7,7 @@ const createProject = async (req, res) => {
     const createdProject = await new ProjectApi(accessToken).createProject(req.body);
     return res.json(createdProject.data);
   } catch (error) {
-    return res.status(error.status||400).end(error.message);
+    return res.status(error.status||422).json(error.response.data);
   }
 }
 
