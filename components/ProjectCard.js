@@ -1,7 +1,7 @@
 import React from 'react';
 import { CardBody, CardTitle, Card, Row, Col, CardHeader, CardText } from 'reactstrap';
 
-const ProjectCard = ({project}) => {
+const ProjectCard = ({project, children}) => {
 
   return (
     <Card className="portfolio-card">
@@ -12,6 +12,9 @@ const ProjectCard = ({project}) => {
         <p className="portfolio-card-location">{project.location}</p>
         <CardTitle className="portfolio-card-title">{project.title}</CardTitle>
         <CardText className="portfolio-card-text">{project.description}</CardText>
+        { children &&
+          children
+        }
       </CardBody>
     </Card>
   )

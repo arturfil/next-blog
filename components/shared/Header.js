@@ -24,7 +24,9 @@ const BsNavLink = (props) => {
 const BsNavBrand = () => {
   return (
     <Link href="/">
-      <a className="navbar-brand port-navbar-brand">Arturo FV</a>
+      <div className="logo">
+        <img className="image" src="/images/logo_updated_dark.png" alt="" srcset=""/>
+      </div>
     </Link>
   )
 }

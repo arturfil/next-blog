@@ -9,11 +9,20 @@ const handleProject = async (req, res) => {
   }
 
   if (req.method === "PATCH") {
-    const { accessToken } = await auth0.getSession(req);
-    const json = await new ProjectApi(accessToken).update(req.query.id, req.body);
-    return res.json(json.data);
+    try {
+      const { accessToken } = await auth0.getSession(req);
+      const json = await new ProjectApi(accessToken).update(req.query.id, req.body);
+      return res.json(json.data);
+    } catch (error) {
+      return res.status(error.status || 422).json(error.response.data);
+    }
   }
 
+  if (req.method === 'DELETE') {
+    const { accessToken } = await auth0.getSession(req);
+    const json = await new ProjectApi(accessToken).delete(req.query.id);
+    return res.json(json.data)
+  }
 }
 
 export default handleProject;

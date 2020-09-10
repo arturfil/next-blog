@@ -37,3 +37,16 @@ html, body {
   font-weight: bold;
   letter-spacing: 2px;
 }
+
+.logo {
+  background-color: rgb(255, 255, 255);
+  border-radius: 55%;
+  padding: 10px 15px;
+  .image {
+    border-radius: 30px;
+    max-height: 60px;
+    min-height: 30px;
+    height: 100%;
+    max-width: 80px;
+  }
+}

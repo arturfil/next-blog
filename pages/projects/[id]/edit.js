@@ -6,14 +6,17 @@ import {useRouter} from 'next/router';
 import { useGetProject, useUpdateProject } from '../../../actions/projects';
 import ProjectForm from '../../../components/ProjectForm';
 import { Row, Col } from 'reactstrap';
+import { toast } from 'react-toastify';
 
 const ProjectEdit = ({user}) => {
   const router = useRouter();
-  const [updateProject, {data, error, loading}] = useUpdateProject();
+  const [updateProject, {error}] = useUpdateProject();
   const { data: initialData } = useGetProject(router.query.id);
 
-  const _updateProject = (data) => {
-    updateProject(router.query.id, data);
+  const _updateProject = async (data) => {
+
+    await updateProject(router.query.id, data);
+    toast.success('Project has been updated!', {autoClose: 2000})
   }
 
   return (
@@ -26,6 +29,9 @@ const ProjectEdit = ({user}) => {
                 <ProjectForm 
                   onSubmitData={_updateProject} 
                   initialData={initialData  }/>
+              }
+              { error &&
+                <div className="alert alert-danger mt-2">{error}</div>
               }
             </Col>
           </Row>

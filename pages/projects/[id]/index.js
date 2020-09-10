@@ -20,11 +20,23 @@ const Project = ({project}) => {
   )
 }
 
-export const getServerSideProps = async ({query}) => {
-  const json = await new ProjectApi().getById(query.id);
-  const project = json.data;
+export const getStaticPaths = async () => {
+  const json = await new ProjectApi().getAll();
+  const projects = json.data;
 
-  return {props: {project}};
+  const paths = projects.map(project => {
+    return {
+      params: {id: project._id}
+    }
+  })
+
+  return {paths, fallback: false};
+}
+
+export const getStaticProps = async ({params}) => {
+  const json = await new ProjectApi().getById(params.id);
+  const project = json.data;
+  return { props: {project}};
 }
 
 export default Project; 
