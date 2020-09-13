@@ -1,5 +1,5 @@
-import ProjectApi from '../../../lib/api/projects';
-import auth0 from '../../../utils/auth0';
+import ProjectApi from '../../../../lib/api/projects';
+import auth0 from '../../../../utils/auth0';
 
 const createProject = async (req, res) => {
   try {
