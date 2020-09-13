@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { isAuthorized } from '../../utils/auth0';
 import {
   Collapse,
   Navbar,
@@ -6,15 +7,19 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
+  Dropdown, 
+  DropdownMenu, 
+  DropdownItem,
+  DropdownToggle
 } from 'reactstrap';
 import Link from 'next/link';
 
 // helper component to re-use within the main component
 const BsNavLink = (props) => {
-  const {title, href} = props;
+  const {title, href, className=""} = props;
   return (
     <Link href={href}>
-      <a className="nav-link port-navbar-link">
+      <a className={`nav-link port-navbar-link ${className}`}>
         {title}
       </a>
     </Link>
@@ -32,8 +37,46 @@ const BsNavBrand = () => {
 }
 
 const LoginLink = () => <a href="/api/v1/login" className="nav-link port-navbar-link">Login</a>
+const LogoutLink = () => <a href="/api/v1/logout" className="nav-link port-navbar-link">Logout</a>
 
- const LogoutLink = () => <a href="/api/v1/logout" className="nav-link port-navbar-link">Logout</a>
+const AdminMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <Dropdown
+      className="port-navbar-link port-dropdown-menu "
+      nav
+      isOpen={isOpen}
+      toggle={() => setIsOpen(!isOpen)}>
+      <DropdownToggle className="port-dropdown-toggle" nav caret>
+        Admin
+      </DropdownToggle>
+      <DropdownMenu
+        right>
+        <DropdownItem>
+          <BsNavLink 
+            className="port-dropdown-item" 
+            href="/projects/new/" title="Create Project"/>
+        </DropdownItem>
+        <DropdownItem>
+          <BsNavLink 
+            className="port-dropdown-item" 
+            href="/projects/" title="Projects"/>
+        </DropdownItem>
+        <DropdownItem>
+          <BsNavLink 
+            className="port-dropdown-item" 
+            href="/blogs/editor" title="Blog Manager"/>
+        </DropdownItem>
+        <DropdownItem>
+          <BsNavLink 
+            className="port-dropdown-item" 
+            href="/blogs/dashboard" title="Dashboard"/>
+        </DropdownItem>
+      </DropdownMenu>
+    </Dropdown>
+  )
+}
 
 const Header = ({user, loading, className}) =>  {
   const [isOpen, setIsOpen] = useState(false);
@@ -68,12 +111,15 @@ const Header = ({user, loading, className}) =>  {
             { !loading && 
               <>
                 { user &&
-                  <NavItem className="port-navbar-item clickable">
-                    <LogoutLink/>
-                  </NavItem>
+                  <>
+                    { isAuthorized(user, 'admin') && <AdminMenu/>}
+                    <NavItem className="port-navbar-item">
+                      <LogoutLink/>
+                    </NavItem>
+                  </>
                 }
                 { !user &&
-                  <NavItem className="port-navbar-item clickable">
+                  <NavItem className="port-navbar-item ">
                     <LoginLink/>
                   </NavItem>
                 }

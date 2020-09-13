@@ -17,7 +17,7 @@ const withAuth = Component => role => {
         return <Redirect ssr to="/api/v1/login"/>
       }
 
-      return <Component data={data} loading={loading} {...props} />;  
+      return <Component user={data} loading={loading} {...props} />;  
     }
   }
 }
