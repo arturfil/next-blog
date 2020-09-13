@@ -9,15 +9,20 @@ import { Row, Col, Button} from 'reactstrap';
 import ProjectCard from '../../components/ProjectCard';
 import { isAuthorized } from '../../utils/auth0'
 
-const Projects = ({projects}) => {
+const Projects = ({projects: initialProjects}) => {
   const router = useRouter();
+  const [projects, setProjects] = useState(initialProjects);
   const [deleteProject, {data, error}] = useDeleteProject();
   const {data: userData, loading: userLoading} = useGetUser();
 
   const _deleteProject = async (e, projectId) => {
     e.stopPropagation()
     const isConfirm = confirm('Are you sure you want to Delete it?');
-    if (isConfirm) await deleteProject(projectId)
+    if (isConfirm) {
+      await deleteProject(projectId);
+      const newProjects = projects.filter(project => project._id !== projectId);
+      setProjects(newProjects);
+    }
   }
 
     return (

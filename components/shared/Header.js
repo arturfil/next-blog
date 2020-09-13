@@ -25,7 +25,7 @@ const BsNavBrand = () => {
   return (
     <Link href="/">
       <div className="logo">
-        <img className="image" src="/images/logo_updated_dark.png" alt="" srcset=""/>
+        <img className="image" src="/images/logo_updated_dark.png" alt=""/>
       </div>
     </Link>
   )
