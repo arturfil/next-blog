@@ -30,7 +30,7 @@ const BsNavBrand = () => {
   return (
     <Link href="/">
       <div className="logo">
-        <img className="image" src="/images/logo_updated_dark.png" alt=""/>
+        <img className="image" src="/images/logo_updated_yt.png" alt=""/>
       </div>
     </Link>
   )
@@ -57,11 +57,6 @@ const AdminMenu = () => {
           <BsNavLink 
             className="port-dropdown-item" 
             href="/projects/new/" title="Create Project"/>
-        </DropdownItem>
-        <DropdownItem>
-          <BsNavLink 
-            className="port-dropdown-item" 
-            href="/projects/" title="Projects"/>
         </DropdownItem>
         <DropdownItem>
           <BsNavLink 

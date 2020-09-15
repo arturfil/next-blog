@@ -64,7 +64,8 @@ export const getStaticProps = async () => {
   const json = await new ProjectApi().getAll();
   const projects = json.data
   return {
-    props: { projects }
+    props: { projects },
+    unstable_revalidate: 1
   }
 }
 
